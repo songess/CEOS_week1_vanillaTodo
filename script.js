@@ -35,3 +35,10 @@ todoInput.addEventListener('keypress', (e) => {
 });
 
 addTodo.addEventListener('click', pushNewTodo);
+
+//todo 삭제하기
+document.querySelector('.todoSection').addEventListener('click', (e) => {
+  if (e.target.className === 'todoDelete') {
+    e.target.parentElement.remove();
+  }
+});
