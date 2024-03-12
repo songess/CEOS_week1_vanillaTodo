@@ -2,7 +2,7 @@
 const addTodo = document.querySelector('.addTodo');
 const todoInput = document.querySelector('.todoInput');
 
-addTodo.addEventListener('click', () => {
+const pushNewTodo = () => {
   if (todoInput.value) {
     const todoCard = document.createElement('div');
     const checkbox = document.createElement('input');
@@ -21,7 +21,17 @@ addTodo.addEventListener('click', () => {
 
     todoCard.append(checkbox, todoContent, todoDelete);
     document.querySelector('.todoSection').append(todoCard);
+
+    todoInput.value = '';
   } else {
     alert('할 일을 입력해주세요!');
   }
+};
+
+todoInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    pushNewTodo();
+  }
 });
+
+addTodo.addEventListener('click', pushNewTodo);
