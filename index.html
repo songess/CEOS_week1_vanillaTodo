@@ -8,7 +8,37 @@
   </head>
 
   <body>
-    <div class="container"></div>
+    <main class="wrapper">
+      <header class="todoHeader">
+        <div class="headerDMY">
+          <span class="headerDate">11</span>
+          <div class="headerMY">
+            <span class="headerMonth">3</span>
+            <span class="headerYear">2024</span>
+          </div>
+        </div>
+        <div class="headerDay">Monday</div>
+      </header>
+      <section class="todoSection">
+        <div class="todoCard">
+          <input type="checkbox" class="todoCheckbox" id="todoCheckbox" />
+          <label class="todoContent" for="todoCheckbox">할 일 1</label>
+          <div class="todoDelete">X</div>
+        </div>
+      </section>
+      <section class="todoInputGroup">
+        <input
+          type="text"
+          placeholder="할 일을 입력해주세요..."
+          class="todoInput"
+        />
+        <button>+</button>
+      </section>
+      <footer class="todoFooter">
+        <span class="todoProgress">4 개 / 7 개</span>
+        <span class="todo">todo List</span>
+      </footer>
+    </main>
   </body>
   <script src="script.js"></script>
 </html>
