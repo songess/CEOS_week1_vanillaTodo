@@ -66,14 +66,37 @@ body {
   flex-grow: 1;
 }
 
+.todoSection span,
+.doneSection span {
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #3c4044;
+}
+
 .todoCard {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.doneCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  color: #868e96;
+  & label {
+    text-decoration: line-through;
+  }
+  & div {
+    color: black;
+  }
 }
 
 .todoCard:hover,
+.doneCard:hover,
 .todoCheckbox:hover,
 .todoContent:hover {
   background-color: #f8f9fa;
@@ -93,7 +116,8 @@ body {
   display: none;
 }
 
-.todoCard:hover .todoDelete {
+.todoCard:hover .todoDelete,
+.doneCard:hover .todoDelete {
   display: block;
   cursor: pointer;
 }
