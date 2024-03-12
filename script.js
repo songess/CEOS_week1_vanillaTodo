@@ -1,6 +1,7 @@
 // todo 추가하기
 const addTodo = document.querySelector('.addTodo');
 const todoInput = document.querySelector('.todoInput');
+let checkboxNumber = 0;
 
 const pushNewTodo = () => {
   if (todoInput.value) {
@@ -12,9 +13,9 @@ const pushNewTodo = () => {
     todoCard.className = 'todoCard';
     checkbox.type = 'checkbox';
     checkbox.className = 'todoCheckbox';
-    checkbox.id = 'todoCheckbox';
+    checkbox.id = `todoCheckbox${checkboxNumber}`;
     todoContent.className = 'todoContent';
-    todoContent.htmlFor = 'todoCheckbox';
+    todoContent.htmlFor = `todoCheckbox${checkboxNumber++}`;
     todoContent.textContent = todoInput.value;
     todoDelete.className = 'todoDelete';
     todoDelete.textContent = 'X';
