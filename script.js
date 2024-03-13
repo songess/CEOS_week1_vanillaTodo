@@ -2,6 +2,20 @@
 const addTodo = document.querySelector('.addTodo');
 const todoInput = document.querySelector('.todoInput');
 let checkboxNumber = 0;
+let doneCount = document.querySelectorAll('.doneCard').length;
+let todoCount = document.querySelectorAll('.todoCard').length + doneCount;
+//등록 된 todo, 완료 된 todo 개수 표시
+document
+  .querySelector('.todoProgress')
+  .append(`${doneCount} 개 / ${todoCount} 개 `);
+//개수 업데이트 함수
+const updateTodoCount = () => {
+  doneCount = document.querySelectorAll('.doneCard').length;
+  todoCount = document.querySelectorAll('.todoCard').length + doneCount;
+  document.querySelector(
+    '.todoProgress'
+  ).textContent = `${doneCount} 개 / ${todoCount} 개 `;
+};
 
 const pushNewTodo = () => {
   if (todoInput.value.trim()) {
@@ -24,6 +38,7 @@ const pushNewTodo = () => {
     document.querySelector('.todoSection').append(todoCard);
 
     todoInput.value = '';
+    updateTodoCount();
   } else {
     todoInput.value = '';
     alert('할 일을 입력해주세요!');
@@ -42,12 +57,14 @@ addTodo.addEventListener('click', pushNewTodo);
 document.querySelector('.todoSection').addEventListener('click', (e) => {
   if (e.target.className === 'todoDelete') {
     e.target.parentElement.remove();
+    updateTodoCount();
   }
 });
 
 document.querySelector('.doneSection').addEventListener('click', (e) => {
   if (e.target.className === 'todoDelete') {
     e.target.parentElement.remove();
+    updateTodoCount();
   }
 });
 
@@ -57,6 +74,7 @@ document.querySelector('.todoSection').addEventListener('click', (e) => {
     const todoCard = e.target.parentElement;
     todoCard.className = 'doneCard';
     document.querySelector('.doneSection').append(todoCard);
+    updateTodoCount();
   }
 });
 
@@ -65,5 +83,6 @@ document.querySelector('.doneSection').addEventListener('click', (e) => {
     const doneCard = e.target.parentElement;
     doneCard.className = 'todoCard';
     document.querySelector('.todoSection').append(doneCard);
+    updateTodoCount();
   }
 });
