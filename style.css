@@ -60,10 +60,12 @@ body {
   font-weight: 500;
 }
 
-.todoSection {
+.todoSection,
+.doneSection {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1 0;
+  overflow-y: scroll;
 }
 
 .todoSection span,
@@ -86,6 +88,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 1rem;
+  background-color: #f8f9fa;
   color: #868e96;
   & label {
     text-decoration: line-through;
@@ -99,7 +102,7 @@ body {
 .doneCard:hover,
 .todoCheckbox:hover,
 .todoContent:hover {
-  background-color: #f8f9fa;
+  background-color: #e9eaea;
   cursor: pointer;
 }
 

@@ -43,3 +43,26 @@ document.querySelector('.todoSection').addEventListener('click', (e) => {
     e.target.parentElement.remove();
   }
 });
+
+document.querySelector('.doneSection').addEventListener('click', (e) => {
+  if (e.target.className === 'todoDelete') {
+    e.target.parentElement.remove();
+  }
+});
+
+//완료 todo 옮기기
+document.querySelector('.todoSection').addEventListener('click', (e) => {
+  if (e.target.className === 'todoCheckbox') {
+    const todoCard = e.target.parentElement;
+    todoCard.className = 'doneCard';
+    document.querySelector('.doneSection').append(todoCard);
+  }
+});
+
+document.querySelector('.doneSection').addEventListener('click', (e) => {
+  if (e.target.className === 'todoCheckbox') {
+    const doneCard = e.target.parentElement;
+    doneCard.className = 'todoCard';
+    document.querySelector('.todoSection').append(doneCard);
+  }
+});
