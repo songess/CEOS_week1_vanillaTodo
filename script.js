@@ -4,7 +4,7 @@ const todoInput = document.querySelector('.todoInput');
 let checkboxNumber = 0;
 
 const pushNewTodo = () => {
-  if (todoInput.value) {
+  if (todoInput.value.trim()) {
     const todoCard = document.createElement('div');
     const checkbox = document.createElement('input');
     const todoContent = document.createElement('label');
@@ -25,6 +25,7 @@ const pushNewTodo = () => {
 
     todoInput.value = '';
   } else {
+    todoInput.value = '';
     alert('할 일을 입력해주세요!');
   }
 };
