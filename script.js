@@ -1,13 +1,7 @@
-// todo 추가하기
-const addTodo = document.querySelector('.addTodo');
-const todoInput = document.querySelector('.todoInput');
+/*
+  checkboxNumber: todoCard가 unique한 id를 갖기 위한 변수
+*/
 let checkboxNumber = 0;
-let doneCount = document.querySelectorAll('.doneCard').length;
-let todoCount = document.querySelectorAll('.todoCard').length + doneCount;
-//등록 된 todo, 완료 된 todo 개수 표시
-document
-  .querySelector('.todoProgress')
-  .append(`${doneCount} 개 / ${todoCount} 개 `);
 
 //todoCard 만들기
 const createTodoCard = (todo, isDone) => {
@@ -88,6 +82,22 @@ const deleteDoneFromLocalStorage = (todo) => {
   localStorage.setItem('done', JSON.stringify(newDoneList));
 };
 
+/* 
+  doneCount: 완료 된 todo 개수
+  todoCount: 등록 된 todo 개수
+*/
+
+let doneCount = document.querySelectorAll('.doneCard').length;
+let todoCount = document.querySelectorAll('.todoCard').length + doneCount;
+
+//등록 된 todo, 완료 된 todo 개수 표시
+const noteTodoProgress = () => {
+  document.querySelector(
+    '.todoProgress'
+  ).textContent = `${doneCount} 개 / ${todoCount} 개 `;
+};
+noteTodoProgress();
+
 //오늘 날짜 표시
 const today = new Date();
 const year = today.getFullYear();
@@ -112,10 +122,11 @@ document.querySelector('.headerDay').append(`${dayList[day]}`);
 const updateTodoCount = () => {
   doneCount = document.querySelectorAll('.doneCard').length;
   todoCount = document.querySelectorAll('.todoCard').length + doneCount;
-  document.querySelector(
-    '.todoProgress'
-  ).textContent = `${doneCount} 개 / ${todoCount} 개 `;
+  noteTodoProgress();
 };
+
+//todo 추가하기
+const todoInput = document.querySelector('.todoInput');
 
 const pushNewTodo = () => {
   if (todoInput.value.trim()) {
@@ -136,7 +147,7 @@ todoInput.addEventListener('keypress', (e) => {
   }
 });
 
-addTodo.addEventListener('click', pushNewTodo);
+document.querySelector('.addTodo').addEventListener('click', pushNewTodo);
 
 //todo 삭제하기
 document.querySelector('.todoSection').addEventListener('click', (e) => {
