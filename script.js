@@ -8,6 +8,27 @@ let todoCount = document.querySelectorAll('.todoCard').length + doneCount;
 document
   .querySelector('.todoProgress')
   .append(`${doneCount} 개 / ${todoCount} 개 `);
+
+//오늘 날짜 표시
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth() + 1;
+const date = today.getDate();
+const day = today.getDay();
+const dayList = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+document.querySelector('.headerDate').append(`${date}`);
+document.querySelector('.headerMonth').append(`${month}`);
+document.querySelector('.headerYear').append(`${year}`);
+document.querySelector('.headerDay').append(`${dayList[day]}`);
+
 //개수 업데이트 함수
 const updateTodoCount = () => {
   doneCount = document.querySelectorAll('.doneCard').length;
